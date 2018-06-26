@@ -2,7 +2,7 @@
 
 ## Intro:
 
-    Hi my name is Kara, I'm a developer at MOO print.
+Hi my name is Kara, I'm a developer at MOO print.
 
 ## Section 1: The Journey before the Journey.
 
