@@ -126,9 +126,100 @@ It felt frustrating, but weirdly refreshing. I was learning something knew, I co
 
 The pay off was massive! 
 
-One week later, I had a fairly simple application which pulled repos from the gitHub API.
+One week later, I had a fairly simple application which pulled repos from the gitHub API. But it felt like I'd completed some sort of marathon.
 
 But more importantly it worked, I'd done it! 
 
-### Slide 9
+### Slide 9 
 
+Attack of the MLs! 
+
+So my second project, built upon what I'd learnt in the previous project. 
+
+How about a pokédex type app? 
+
+How about SWAPI - The Star Wars api?
+
+So I bullied one of my best friends James to pair with me, and endure me swearing at my IDE for several hours, I ran into similar issues as above.
+
+And I came up with this:
+
+Pretty nice huh?
+
+### Slide 10
+
+This is where I fell in love.
+
+I fell in love with this amazing thing! 
+
+```javascript
+/* State declaration */
+type state = {
+  count: int,
+  show: bool,
+};
+
+/* Action declaration */
+type action =
+  | Click
+  | Toggle;
+
+/* Component template declaration.
+   Needs to be **after** state and action declarations! */
+let component = ReasonReact.reducerComponent("Example");
+
+/* greeting and children are props. `children` isn't used, therefore ignored.
+   We ignore it by prepending it with an underscore */
+let make = (~greeting, _children) => {
+  /* spread the other default fields of component here and override a few */
+  ...component,
+
+  initialState: () => {count: 0, show: true},
+
+  /* State transitions */
+  reducer: (action, state) =>
+    switch (action) {
+    | Click => ReasonReact.Update({...state, count: state.count + 1})
+    | Toggle => ReasonReact.Update({...state, show: ! state.show})
+    },
+
+  render: self => {
+    let message =
+      "You've clicked this " ++ string_of_int(self.state.count) ++ " times(s)";
+    <div>
+      <button onClick=(_event => self.send(Click))>
+        (ReasonReact.string(message))
+      </button>
+      <button onClick=(_event => self.send(Toggle))>
+        (ReasonReact.string("Toggle greeting"))
+      </button>
+      (
+        self.state.show ?
+          ReasonReact.string(greeting) : ReasonReact.null
+      )
+    </div>;
+  },
+};
+```
+
+At the time I was struggling with learning Redux at work. I found the separation of state, action, reducer and middleware. I feel the separation of them into different files didn't help. 
+
+Seeing them written out as succinctly as this really helped me understand them, and bring them back into my work. But aslo it's just really freaking nice.
+
+### Slide 11
+
+I then spent the next 2 months not really doing that much Reason, work got pretty intense. But I did continue to immerse myself in the learning, I listened to the great ReasonTown podcast, followed people on Twitter, and even started the new pride in london website in Reason.
+
+Then something amazing happened:
+
+## ReasonConf and the level up! 
+
+### Slide 12
+
+Rewind a few months to February, and the ReasonLondon meetup, when I first found out about the Reason Conference, it sounded like my dream place. I had to go, so I did this:
+
+A week before the conference I get a message from one of the conference organisers Nik saying that I got a ticket, I was going! 
+
+###Slide 12 
+
+Insert picture of me on my way to ReasonConf
