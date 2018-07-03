@@ -47,3 +47,51 @@ Now where to get started?
 🕵️‍♀️
 
 ## Section 2: The beginning.
+
+### Slide 4
+
+Maybe now is a good time to give a good intro to what Reason, Reason React, and bucklesript are?
+
+
+### Slide 5 
+
+So I began with @ur_friend_james' "A First Reason React app for Javascript developers", possibly the first article on how to set up a Reason React project for a noob like myself. 
+
+The first thing I came to was the component syntax for Reason React, which is sorta similar but weird coming from a React background.
+
+```javascript
+let component = ReasonReact.statelessComponent("App");
+
+let make = (_children) => {
+  ...component,
+  render: (_self) =>
+    <div className="App">
+      <h1>{ReasonReact.stringToElement("Reason Projects")}</h1>
+    </div>
+};
+```
+```javascript 
+let component = ReasonReact.statelessComponent("App");
+
+/*WUT??*/ let make = (/*WUT??*/_children) => {
+  ...component,
+  render: (_self) =>
+    <div className="App">
+      <h1>{/*WUT??*/ReasonReact.string("Reason Projects")}</h1>
+    </div>
+};
+```
+Just talking through this, we have a make which is a function within the ReasonReact module. This make function then returns a record. Oh yeah a record is like an object, but not a JS object, we'll get to that later. 
+
+The ...component is the return of the component, allowing us access to the component spec. 
+
+The rest of the component is pretty much the same as a normal React component. Except for the 'ReasonReact.string("Reason Projects")' which is just returning an element with the string inside of it. 
+
+Pretty simple right? 
+
+Now lets talk about the good bits! 
+
+### Slide 6 
+
+A love affair with reducer components! 
+
