@@ -57,6 +57,12 @@ Maybe now is a good time to give a good intro to what Reason, Reason React, and 
 
 So I began with @ur_friend_james' "A First Reason React app for Javascript developers", possibly the first article on how to set up a Reason React project for a noob like myself. 
 
+The ugly af part of this was setting up my dev environment. At the time I think I spent about 3 hours just messing around with OPAM (Ocaml package manager), merlin, ocaml, before I realised you could just install reasoncli and use that to start everything! 
+
+Fortunately nwo the docs have improved a lot and it's simpler to get started.
+
+### Slide 6
+
 The first thing I came to was the component syntax for Reason React, which is sorta similar but weird coming from a React background.
 
 ```javascript
@@ -87,11 +93,42 @@ The ...component is the return of the component, allowing us access to the compo
 
 The rest of the component is pretty much the same as a normal React component. Except for the 'ReasonReact.string("Reason Projects")' which is just returning an element with the string inside of it. 
 
-Pretty simple right? 
+Pretty simple right?  
 
-Now lets talk about the good bits! 
+### Slide 7
 
-### Slide 6 
+But it sucked, there is a really annoying uncanny valley situation where you're like I know what this is, it looks like stuff I worked on every day, but it doesn't work the same way! 
 
-A love affair with reducer components! 
+You have to convert JSON:
+
+```javascript
+let parseRepoJson = (json: Js.Json.t) : repo => {
+  full_name: Json.Decode.field("full_name", Json.Decode.string, json),
+  stargazers_count:
+    Json.Decode.field("stargazers_count", Json.Decode.int, json),
+  html_url: Json.Decode.field("html_url", Json.Decode.string, json)
+};
+```
+
+You have these weird pipe things?
+
+```javascript
+|>
+```
+
+So I struggled, I followed the instructions as laid out by James for a couple of days, I'd try things but they wouldn't work. I'm not sure due to non understanding configuration, fundamentals or other general things. I didn't understand what I was doing. 
+
+I dove into incomplete docs, looked for any resources on the internet to find where I was going wrong! 
+
+It felt frustrating, but weirdly refreshing. I was learning something knew, I couldn't find all the answers, I had to work.
+
+### Slide 8
+
+The pay off was massive! 
+
+One week later, I had a fairly simple application which pulled repos from the gitHub API.
+
+But more importantly it worked, I'd done it! 
+
+### Slide 9
 
